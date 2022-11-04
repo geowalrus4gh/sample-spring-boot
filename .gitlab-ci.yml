@@ -58,9 +58,17 @@ cache:
 deploy:jdk8:
   tags:
     - test
-  stage: deploy
+  stage: build
   script:
     - 'mvn -f initial/pom.xml $MAVEN_CLI_OPTS install'
   only:
     variables:
       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      
+deploy_staging:
+  stage: deploy
+  script:
+    - echo "Deploy to staging server"
+  environment:
+    name: staging
+    url: https://staging.ibsplc.com
