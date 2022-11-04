@@ -60,7 +60,7 @@ deploy:jdk8:
     - test
   stage: deploy
   script:
-    - 'mvn -f initial/pom.xml $MAVEN_CLI_OPTS build'
+    - 'mvn -f initial/pom.xml $MAVEN_CLI_OPTS install'
   only:
     variables:
       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
