@@ -66,6 +66,8 @@ deploy:jdk8:
       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       
 deploy_staging:
+  tags:
+    - test
   stage: deploy
   script:
     - echo "Deploy to staging server"
