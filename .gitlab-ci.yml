@@ -74,3 +74,15 @@ deploy_staging:
   environment:
     name: staging
     url: https://staging.ibsplc.com
+    
+release_job:
+  tags:
+    - test
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  script:
+    - echo "running release_job for $TAG"
+  release:                                         # See https://docs.gitlab.com/ee/ci/yaml/#release for available properties
+    tag_name: 'v1.0.0.$CI_PIPELINE_IID'                # The version is incremented per pipeline.
+    description: 'v1.0.0.$CI_PIPELINE_IID'
+    ref: '$CI_COMMIT_SHA'  
