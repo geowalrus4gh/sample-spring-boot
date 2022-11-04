@@ -61,6 +61,8 @@ cache:
 
 # Verify merge requests using JDK8
 verify:jdk8:
+  tags:
+    - test
   extends:
     - .verify
 
